@@ -6,7 +6,7 @@ valuebox_UI <- function(id) {
   )
 }
 
-valuebox <- function(id, value, text, icon_glyphicon) {
+valuebox_server <- function(id, value, text, icon_glyphicon) {
   moduleServer(id, function(input, output, session) {
     
     NS <- session$ns

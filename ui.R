@@ -27,14 +27,14 @@ ui <- dashboardPage(
         status = "info",
         solidHeader = TRUE,
         title = "",
-        mapUI("map1") %>% withSpinner(color = "#0dc5c1")
+        map_UI("map") %>% withSpinner(color = "#7e96a2")
       ),
       
       box(
         status = "info",
         solidHeader = TRUE,
         title = "",
-        barplot_UI("plot") %>% withSpinner(color = "#0dc5c1")
+        barplot_UI("plot") %>% withSpinner(color = "#7e96a2")
       )
     ),
     

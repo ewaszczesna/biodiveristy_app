@@ -6,7 +6,7 @@ picker_input_UI <- function(id) {
   )
 }
 
-picker_input_Server <- function(id, label, choices, selected, live_search_text) {
+picker_input_server <- function(id, label, choices, selected, live_search_text) {
   moduleServer(id, function(input, output, session) {
 
     NS <- session$ns

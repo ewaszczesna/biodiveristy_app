@@ -1,4 +1,4 @@
-mapUI <- function(id) {
+map_UI <- function(id) {
   ns <- NS(id)
   
   tagList(
@@ -6,21 +6,21 @@ mapUI <- function(id) {
   )
 }
 
-mapServer <- function(id, data) {
+map_server <- function(id, data) {
   moduleServer(id, function(input, output, session) {
     
     output$mymap <- renderLeaflet({
-    leaflet(data) %>%
-      addTiles() %>%
+      leaflet(data) %>%
+        addTiles() %>%
         addCircleMarkers(lng = ~data$longitudeDecimal,
-                 lat = ~data$latitudeDecimal,
-                 popup = paste0("<b>Species: </b>", data$vernacularName, " / ", data$scientificName,
-                                "<br>",
-                                "<b>Observed on: </b>", data$eventDate,
-                                "<br>",
-                                "<b>Individuals: </b>", data$individualCount
-                                ),
-                 clusterOptions = markerClusterOptions())
+                         lat = ~data$latitudeDecimal,
+                         popup = paste0("<b>Species: </b>", data$vernacularName, " / ", data$scientificName,
+                                        "<br>",
+                                        "<b>Observed on: </b>", data$eventDate,
+                                        "<br>",
+                                        "<b>Individuals: </b>", data$individualCount
+                                        ),
+                         clusterOptions = markerClusterOptions())
     })
   })
 }

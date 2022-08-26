@@ -16,8 +16,7 @@ barplot_server <- function(id, data, title) {
       
       plot_ly(data, x = ~eventMonth, y = ~observations, type = 'bar', 
               marker = list(color = 'rgb(158,202,225)',
-                            line = list(color = 'rgb(8,48,107)',
-                                        width = 0.5))) %>% 
+                            line = list(color = 'rgb(8,48,107)', width = 0.5))) %>% 
         layout(title = title,
                xaxis = list(title = ""),
                yaxis = list(title = "")

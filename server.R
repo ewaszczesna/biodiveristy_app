@@ -1,19 +1,21 @@
 server <- function(input, output, session) {
   
   output$apply_button <- renderUI({
-    actionButton("apply_button", "Apply", color = "blue")
+    actionButton("apply_button", 
+                 label = div("Apply", icon("check")),
+                 style = "color: #fff; background-color: #337ab7; border-color: #2e6da4")
     
   })
   
   observeEvent(input$kingdom, {
     
-    picker_input_Server(id = "scientific_name",
+    picker_input_server(id = "scientific_name",
                         label = "Scientific name:",
                         choices = sort(unique(data_PL[kingdom == input$kingdom]$scientificName)),
                         selected = sort(data_PL[kingdom == input$kingdom ,]$scientificName),
                         live_search_text = "write here to search for species")
     
-    picker_input_Server(id = "vernacular_name",
+    picker_input_server(id = "vernacular_name",
                         label = "Vernacular name:",
                         choices = sort(unique(data_PL[kingdom == input$kingdom]$vernacularName)),
                         selected =sort(data_PL[kingdom == input$kingdom,]$vernacularName),
@@ -48,11 +50,11 @@ server <- function(input, output, session) {
     if(is.null(input$scientific_name)){shinyalert('Select at least one species in the panel on the left')}
     
     data_PL_filtered <- filter_species_by_user_selection(data_PL, input$scientific_name)
-    mapServer("map1", data_PL_filtered)
+    map_server("map", data_PL_filtered)
     
-    valuebox("total_no_obs", nrow(data_PL_filtered), "Observations", "search")
-    valuebox("individual_counts", sum(data_PL_filtered$individualCount), "Individuals", "signal")
-    valuebox("no_localities", length(unique(data_PL_filtered$locality)), "Regions where species were observed", "globe")
+    valuebox_server("total_no_obs", nrow(data_PL_filtered), "Observations", "search")
+    valuebox_server("individual_counts", sum(data_PL_filtered$individualCount), "Individuals", "signal")
+    valuebox_server("no_localities", length(unique(data_PL_filtered$locality)), "Regions where species were observed", "globe")
     
     barplot_server("plot", data_PL_filtered, "Monthly observations")
     
