@@ -21,5 +21,5 @@ source("utils/utils.R")
 
 data_PL <- setDT(read_feather("data/occurence_PL.feather"))
 data_PL <- replace_empty_values_with_text("data_PL", "kingdom", "Unknown")
-data_PL <- replace_empty_values_with_text_and_value_add_text_from_colname("data_PL", "vernacularName",
-                                                                          "Unknown", "scientificName")
+data_PL <- replace_empty_values_with_text_and_add_text_based_on_values_from_column("data_PL", "vernacularName",
+                                                                                   "Unknown", "scientificName")
