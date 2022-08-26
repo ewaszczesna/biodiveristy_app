@@ -54,7 +54,7 @@ server <- function(input, output, session) {
     valuebox("individual_counts", sum(data_PL_filtered$individualCount), "Individuals", "signal")
     valuebox("no_localities", length(unique(data_PL_filtered$locality)), "Regions where species were observed", "globe")
     
-    ggplotServer("plot1", data_PL_filtered, "Monthly observations")
+    barplot_server("plot", data_PL_filtered, "Monthly observations")
     
   }, ignoreNULL = FALSE, ignoreInit = T)
 

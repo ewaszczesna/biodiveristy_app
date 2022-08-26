@@ -34,7 +34,7 @@ ui <- dashboardPage(
         status = "info",
         solidHeader = TRUE,
         title = "",
-        ggplotUI("plot1") %>% withSpinner(color = "#0dc5c1")
+        barplot_UI("plot") %>% withSpinner(color = "#0dc5c1")
       )
     ),
     
