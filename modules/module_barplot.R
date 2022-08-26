@@ -9,7 +9,7 @@ barplot_UI <- function(id) {
 barplot_server <- function(id, data, title) {
   moduleServer(id, function(input, output, session) {
     
-    data$eventMonth <-  substr(data$eventDate,1,7)
+    data$eventMonth <- as.Date(as.yearmon(data$eventDate, "%Y %m"))
     data <- data[ ,.(observations = .N,  count = sum(individualCount)), by =  eventMonth]
     
     output$my_plot <- renderPlotly({
