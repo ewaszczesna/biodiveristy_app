@@ -27,7 +27,7 @@ What is missing or could be done better:
 
 * Two funtions to replace empty values could be written better. Definietly should be refactored and simplified.
 
-* More unit tests should be written to cover all functionalities.
+* More tests should be written. Especially unit test that cover all functionalities.
 
 * Optimization of loading times.
 

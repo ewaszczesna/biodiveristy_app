@@ -5,3 +5,4 @@ test_dir(
   env = shiny::loadSupport(),
   reporter = c("progress", "fail")
 )
+

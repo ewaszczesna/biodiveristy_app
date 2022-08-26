@@ -12,7 +12,7 @@ library(dplyr)
 library(leaflet)
 library(plotly)
 library(hrbrthemes)
-
+library(zoo)
 
 modules <- dir("modules", full.names = TRUE, recursive = TRUE)
 lapply(modules, source)
