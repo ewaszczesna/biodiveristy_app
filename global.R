@@ -4,7 +4,6 @@ library(shinyWidgets)
 library(shiny.info)
 library(shinyalert)
 library(shinycssloaders)
-library(testthat)
 
 library(feather)
 library(data.table)
