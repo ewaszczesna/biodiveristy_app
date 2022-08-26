@@ -10,9 +10,8 @@ ui <- dashboardPage(
       choices = sort(unique(data_PL$kingdom)),
       selected = sort(unique(data_PL$kingdom))[1]
     ),
-    
-    uiOutput("scientific_name_filter"),
-    uiOutput("vernacular_name_filter"),
+    picker_input_UI("scientific_name"),
+    picker_input_UI("vernacular_name"),
     uiOutput("apply_button")
   ),
   

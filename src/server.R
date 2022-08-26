@@ -5,36 +5,21 @@ server <- function(input, output, session) {
     
   })
   
-
-  output$scientific_name_filter <- renderUI({
-    pickerInput(inputId = "scientific_name",
-                label = "Scientific name:",
-                choices = sort(unique(data_PL[kingdom == input$kingdom]$scientificName)),
-                selected = sort(data_PL[kingdom == input$kingdom ,]$scientificName),
-                multiple = T,
-                options = pickerOptions(size = 10,
-                                        actionsBox = TRUE,
-                                        liveSearch = T,
-                                        liveSearchPlaceholder = "write here to search for species",
-                                        selectedTextFormat = "count")
-    )
+  observeEvent(input$kingdom, {
     
+    picker_input_Server(id = "scientific_name",
+                        label = "Scientific name:",
+                        choices = sort(unique(data_PL[kingdom == input$kingdom]$scientificName)),
+                        selected = sort(data_PL[kingdom == input$kingdom ,]$scientificName),
+                        live_search_text = "write here to search for species")
+    
+    picker_input_Server(id = "vernacular_name",
+                        label = "Vernacular name:",
+                        choices = sort(unique(data_PL[kingdom == input$kingdom]$vernacularName)),
+                        selected =sort(data_PL[kingdom == input$kingdom,]$vernacularName),
+                        live_search_text = "write here to search for species")
+
   })
-  
-  output$vernacular_name_filter <- renderUI({
-    pickerInput(inputId = "vernacular_name",
-                label = "Vernacular name:",
-                choices = sort(unique(data_PL[kingdom == input$kingdom]$vernacularName)),
-                selected = sort(data_PL[kingdom == input$kingdom,]$vernacularName),
-                multiple = T,
-                options = pickerOptions(size = 10,
-                                        actionsBox = TRUE,
-                                        liveSearch = T,
-                                        liveSearchPlaceholder = "write here to search for species",
-                                        selectedTextFormat = "count")
-    )
-  })
-  
   
 
   observeEvent(input$vernacular_name, {
